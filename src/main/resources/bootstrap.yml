@@ -17,8 +17,8 @@ zuul:
   routes:
     # /myProduct/product/list -> /product/product/list
     myProduct:
-    path: /myProduct/**
-    serviceId: product #映射服务的名字
+     path: /myProduct/**
+     serviceId: product #映射服务的名字
   #      sensitiveHeaders: # 允许传递cookie, sensitiveHeaders会过滤cookie
   # 简单写法
   #    product: /myProduct/**
@@ -29,3 +29,11 @@ zuul:
 management:
   security:
     enabled: false #查看所有路由的权限
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
