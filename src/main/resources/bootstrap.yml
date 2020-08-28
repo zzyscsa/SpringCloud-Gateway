@@ -10,7 +10,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
 zuul:
   # 全部服务忽略敏感头（全部服务可传递cookie）
   sensitive-headers:
@@ -26,9 +26,11 @@ zuul:
   ignored-patterns:
     - /**/product/listForOrder # 禁止请求这个地址
 #    - /product/** 禁止请求/product下所有地址
-management:
-  security:
-    enabled: false #查看所有路由的权限
+
+# 新版Zuul Timeout配置
+ribbon:
+  ReadTimeout: 5000
+  SocketTimeout: 5000
 
 hystrix:
   command:
